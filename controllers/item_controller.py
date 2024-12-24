@@ -7,9 +7,9 @@ async def test(request):
     return response.json({"message": "Hello, Sanicaa!"})
 
 async def list_items(request):
-    items = get_all_items()  # Asegúrate de que devuelve un objeto serializable
+    items = get_all_items()
     logger.info(f"Datos obtenidos: {items}")
-    return response.json(items)  # Usa la función json de Sanic para la respuesta
+    return response.json(items)
 
 async def get_item(request, item_id):
     item = get_item_by_id(item_id)

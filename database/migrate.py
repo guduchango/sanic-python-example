@@ -7,7 +7,6 @@ def create_tables():
     Crea las tablas necesarias en la base de datos.
     """
     try:
-        # Configuración de conexión a MySQL
         connection = mysql.connector.connect(
             host= os.getenv('MYSQL_HOST', 'localhost'),   # Cambia esto según tu configuración
             user=os.getenv('MYSQL_USER', 'root'),          # Cambia el usuario
@@ -17,7 +16,6 @@ def create_tables():
 
         if connection.is_connected():
             cursor = connection.cursor()
-            # Crear tabla "items"
             create_items_table_query = """
             CREATE TABLE IF NOT EXISTS items (
                 id INT AUTO_INCREMENT PRIMARY KEY,

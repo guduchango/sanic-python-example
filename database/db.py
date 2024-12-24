@@ -2,7 +2,6 @@ import mysql.connector
 import os
 from contextlib import contextmanager
 
-# Cargar variables de entorno desde el entorno del contenedor
 MYSQL_HOST = os.getenv('MYSQL_HOST', 'localhost')
 MYSQL_USER = os.getenv('MYSQL_USER', 'root')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', 'root_password')

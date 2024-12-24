@@ -2,8 +2,6 @@ from sanic import Sanic
 from routes.item_routes import item_bp
 
 app = Sanic("MySanicApp")
-
-# Registrar las rutas
 app.blueprint(item_bp)
 
 if __name__ == "__main__":

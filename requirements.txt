@@ -1,7 +1,5 @@
 sanic
 mysql-connector-python
 faker
-pyjwt
 passlib
 sanic-ext
-mayim[mysql]
