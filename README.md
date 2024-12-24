@@ -1,5 +1,8 @@
 # how to run it?
 
+## enviroment
+cp .env.example .env
+
 ## docker commands
 ```
 docker commands
