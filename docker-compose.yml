@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Servicio de la aplicación Sanic
+  web:
+    build: .
+    container_name: sanic_app
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root_password
+      - MYSQL_DATABASE=test_db
+    volumes:
+      - .:/app  # Sincroniza el directorio actual con el contenedor
+      - /app/__pycache__  # Opcional: ignora cachés
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+  # Servicio de la base de datos MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: test_db
+    ports:
+      - "3320:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+
+# Definimos una red compartida entre los servicios
+networks:
+  app_network:
+    driver: bridge
+
+# Volumen para la persistencia de datos de MySQL
+volumes:
+  mysql_data:
